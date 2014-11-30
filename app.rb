@@ -9,6 +9,12 @@ Bundler.require
 # functionality of active record
 require './models/Friend'
 require './models/User'
+
+# enable cookie based sessions
+enable :sessions
+
+set :session_secret, '5AhdehiA3924HDad2h1901daHDIAx0'
+
 # set up active record for database
 if ENV['DATABASE_URL']
   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
@@ -20,26 +26,70 @@ else
   )
 end
 
-
-
-# define a route for the root of the site
-get '/' do
-  # render the views/index.erb template
-	erb :index
+before do
+  @user = User.find_by(name: session[:name])
 end
 
-post '/' do
+
+# login page
+get '/' do
+  if @user
+    erb :friends_list
+  else
+	   erb :login
+   end
+end
+
+# login callback
+post '/login' do
+  # Get a handle to a user with a name that matches the
+  # submitted username. Returns nil if no such user
+  # exists
+  user = User.find_by(name: params[:name])
+  if user.nil?
+    # first, we check if the user is in our database
+    @message = "User not found."
+    erb :message_page
+  elsif user.authenticate(params[:password])
+    # if they are, we check if their password is valid,
+    # then actually log in the user by setting a session
+    # cookie to their username
+    session[:name] = user.name
+    redirect '/'
+  else
+    # if the password doesn't match our stored hash,
+    # show a nice error page
+    @message = "Incorrect password."
+    erb :message_page
+  end
+end
+
+get '/logout' do
+  session.clear
   redirect '/'
 end
 
-get '/:name' do
+# Handle the possiblity of errors while creating a new user
+post '/new_user' do
+  @user = User.create(params)
+  if @user.valid?
+    session[:name] = @user.name
+    redirect '/'
+  else
+    @message = @user.errors.full_messages.join(', ')
+    erb :message_page
+  end
 end
 
-post '/:name'
+post '/new_friend' do
+  #TODO
+  @user.friends.create(description: params[:name], due: params[:email])
+  redirect "/"
 end
 
-get '/:name/delete' do
-end
-
-get '/:name/delete/:id' do
+get '/delete_friend/:friend' do
+  @friend = Friend.find(params[:friend])
+  @user = @friend.user
+  @friend.destroy
+  redirect "/"
 end
