@@ -89,7 +89,7 @@ post '/new_friend' do
 end
 
 get '/:friend_id' do
-  #TODO
+  @friend = Friend.find_by(id: params[:friend_id])
   erb :friend_page
 end
 
@@ -98,4 +98,34 @@ get '/:friend_id/delete' do
   @user = @friend.user
   @friend.destroy
   redirect "/"
+end
+
+post '/:friend_id/change_email' do
+  @friend = Friend.find_by(id: params[:friend_id])
+  @friend.update(email: params[:email])
+  redirect "/#{params[:friend_id]}"
+end
+
+post '/:friend_id/change_phone' do
+  @friend = Friend.find_by(id: params[:friend_id])
+  @friend.update(phone: params[:phone])
+  redirect "/#{params[:friend_id]}"
+end
+
+post '/:friend_id/change_fb' do
+  @friend = Friend.find_by(id: params[:friend_id])
+  @friend.update(facebook: params[:fb])
+  redirect "/#{params[:friend_id]}"
+end
+
+post '/:friend_id/change_line' do
+  @friend = Friend.find_by(id: params[:friend_id])
+  @friend.update(line: params[:line])
+  redirect "/#{params[:friend_id]}"
+end
+
+get '/:friend_id/reset' do
+  @friend = Friend.find_by(id: params[:friend_id])
+  @friend.update(last_contacted: Time.now)
+  redirect '/'
 end

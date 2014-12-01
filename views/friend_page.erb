@@ -1,0 +1,87 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-1 inline-items">
+      <h1 class="friend"><%= @friend.name %></h1>
+      <span class="gap"></span>
+      <a href='/<%= @friend.id %>/reset' class="btn btn-default">Contacted</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-1">
+      <div class="list-group">
+
+        <% unless @friend.email.blank? %>
+        <div class="list-group-item icon-holder">
+          <span class="glyphicon glyphicon-envelope"></span>
+          <%= @friend.email %>
+        </div>
+        <% end %>
+        <div class="list-group-item">
+          <form class="form-inline" role="form" action='/<%= @friend.id %>/change_email' method='POST'>
+            <input type="text" class="form-control" name="email" placeholder="Email">
+            <button type="submit" class="btn btn-default glyphicon glyphicon-envelope"></button>
+          </form>
+        </div>
+
+        <% unless @friend.phone.blank? %>
+        <div class="list-group-item icon-holder">
+          <span class="glyphicon glyphicon-phone"></span>
+          <%= @friend.phone %>
+        </div>
+        <% end %>
+        <div class="list-group-item">
+          <form class="form-inline" role="form" action='/<%= @friend.id %>/change_phone' method='POST'>
+            <input type="text" class="form-control" name="phone" placeholder="Phone">
+            <button type="submit" class="btn btn-default glyphicon glyphicon-phone"></button>
+          </form>
+        </div>
+
+        <% unless @friend.facebook.blank? %>
+        <div class="list-group-item icon-holder">
+          <i class="fa fa-facebook-square"></i>
+          <%= @friend.facebook %>
+        </div>
+        <% end %>
+        <div class="list-group-item">
+          <form class="form-inline" role="form" action='/<%= @friend.id %>/change_fb' method='POST'>
+            <input type="text" class="form-control" name="fb" placeholder="Facebook">
+            <button type="submit" class="btn btn-default"><i class="fa fa-facebook-square"></i></button>
+          </form>
+        </div>
+
+        <% unless @friend.line.blank? %>
+        <div class="list-group-item icon-holder">
+          <img src="/fonts/line.svg" class="icon">
+          <%= @friend.line %>
+        </div>
+        <% end %>
+        <div class="list-group-item">
+          <form class="form-inline" role="form" action='/<%= @friend.id %>/change_line' method='POST'>
+            <input type="text" class="form-control" name="line" placeholder="Line">
+            <button type="submit" class="btn btn-default"><img src="/fonts/line.svg" class="button-icon"></button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <% unless @friend.last_contacted.blank? %>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-1">
+      <p>Last contacted <%= @friend.last_contacted %></p>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="row md-spacer">
+    <div class="col-md-4 col-md-offset-1">
+      <a href='/'>Home</a>
+      <br />
+      <a href='/logout'>Logout</a>
+    </div>
+  </div>
+
+</div>
