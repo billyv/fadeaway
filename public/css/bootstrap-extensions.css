@@ -1,0 +1,17 @@
+.col-md-2.no-gutter {
+  padding-right: 4px;
+}
+.col-md-10.no-gutter {
+  padding-left: 0px;
+}
+.lg-spacer {
+  margin-top: 40px;
+}
+.md-spacer {
+  margin-top: 20px;
+}
+.btn-xl {
+  padding: 14px;
+  font-size: 14px;
+  border-radius: 2px;
+}

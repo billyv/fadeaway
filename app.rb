@@ -34,10 +34,11 @@ end
 # login page
 get '/' do
   if @user
+    @friends = @user.friends
     erb :friends_list
   else
-	   erb :login
-   end
+    erb :login
+  end
 end
 
 # login callback
@@ -83,12 +84,17 @@ end
 
 post '/new_friend' do
   #TODO
-  @user.friends.create(description: params[:name], due: params[:email])
+  @user.friends.create(name: params[:name], user_id: @user.id)
   redirect "/"
 end
 
-get '/delete_friend/:friend' do
-  @friend = Friend.find(params[:friend])
+get '/:friend_id' do
+  #TODO
+  erb :friend_page
+end
+
+get '/:friend_id/delete' do
+  @friend = Friend.find_by(id: params[:friend_id])
   @user = @friend.user
   @friend.destroy
   redirect "/"

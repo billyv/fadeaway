@@ -1,1 +1,82 @@
-<h1>working owkrgindg weopkg</h1>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <h1 class="text-center"><%= @user.name %>'s Friends</h1>
+    </div>
+  </div>
+
+  <div class="row lg-spacer" name="friend-grid">
+
+    <div class="col-md-4">
+      <% @friends.each do |friend| %>
+      <div class="row">
+        <div class="col-md-2 no-gutter">
+          <a href='/<%= friend.id %>/delete' class="btn btn-xl btn-default btn-block"><span class="glyphicon glyphicon-remove"> </span></a>
+        </div>
+        <div class="col-md-10 no-gutter">
+          <a href='/<%friend.id %>' class="btn btn-default btn-xl btn-block"><%= friend.name %></a>
+          <br />
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <% @friends.each do |friend| %>
+      <div class="row">
+        <div class="col-md-2 no-gutter">
+          <a href='/<%= friend.id %>/delete' class="btn btn-xl btn-default btn-block"><span class="glyphicon glyphicon-remove"> </span></a>
+        </div>
+        <div class="col-md-10 no-gutter">
+          <a href='/<%friend.id %>' class="btn btn-default btn-xl btn-block"><%= friend.name %></a>
+          <br />
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <% @friends.each do |friend| %>
+      <div class="row">
+        <div class="col-md-2 no-gutter">
+          <a href='/<%= friend.id %>/delete' class="btn btn-xl btn-default btn-block"><span class="glyphicon glyphicon-remove"> </span></a>
+        </div>
+        <div class="col-md-10 no-gutter">
+          <a href='/<%friend.id %>' class="btn btn-default btn-xl btn-block"><%= friend.name %></a>
+          <br />
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div> <!-- /row friend-grid -->
+
+  <div class="row lg-spacer">
+    <div class="col-md-4">
+      <form class="form-inline" role="form" action='/new_friend' method='POST'>
+        <label for="friend">New Friend</label>
+        <input type="text" class="form-control" id="name" name="name">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </div> <!-- /row -->
+
+  <div class="row md-spacer">
+    <div class="col-md-4">
+      <a href="/logout">logout</a>
+    </div>
+  </div>
+
+</div> <!-- /container -->
+
+<!-- <span class="glyphicon glyphicon-cloud"></span></p>  -->
+
+<!--
+
+<div class="row">
+<div class="col-md-4">.col-md-4</div>
+<div class="col-md-4">.col-md-4</div>
+<div class="col-md-4">.col-md-4</div>
+</div>
+
+-->
