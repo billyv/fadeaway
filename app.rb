@@ -126,6 +126,10 @@ end
 
 get '/:friend_id/reset' do
   @friend = Friend.find_by(id: params[:friend_id])
-  @friend.update(last_contacted: Time.now)
-  redirect '/'
+  moment = Time.now.utc
+  moment = moment.localtime
+  @friend.update(last_contacted: moment)
+  milli = (moment.to_f * 1000).to_i
+  @friend.update(last_contacted_milli: milli)
+  redirect "/#{params[:friend_id]}"
 end
