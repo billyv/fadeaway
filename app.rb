@@ -124,6 +124,7 @@ post '/:friend_id/change_line' do
   redirect "/#{params[:friend_id]}"
 end
 
+# reset time last contacted (both in date form and in ms)
 get '/:friend_id/reset' do
   @friend = Friend.find_by(id: params[:friend_id])
   moment = Time.now.utc

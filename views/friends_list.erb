@@ -6,50 +6,25 @@
     </div>
   </div>
 
-  <div class="row lg-spacer" name="friend-grid">
 
+    <% @friends.each_slice(3) do |three_friends| %>
+    <div class="row lg-spacer" name="friend-grid">
+    <% three_friends.each do |friend| %>
     <div class="col-md-4">
-      <% @friends.each do |friend| %>
       <div class="row">
         <div class="col-md-2 no-gutter">
           <a href='/<%= friend.id %>/delete' class="btn btn-xl btn-default btn-block"><span class="glyphicon glyphicon-remove"> </span></a>
         </div>
         <div class="col-md-10 no-gutter">
-          <a href='/<%= friend.id %>' value="<%= friend.last_contacted_milli %>" class="fadefriend btn btn-default btn-xl btn-block"><%= friend.name %></a>
+          <a href='/<%= friend.id %>' name="<%= friend.last_contacted_milli %>" data-last-contacted="<%= friend.last_contacted_milli %>" class="fadefriend btn btn-default btn-xl btn-block"><%= friend.name %></a>
           <br />
         </div>
       </div>
-      <% end %>
     </div>
-
-    <div class="col-md-4">
-      <% @friends.each do |friend| %>
-      <div class="row">
-        <div class="col-md-2 no-gutter">
-          <a href='/<%= friend.id %>/delete' class="btn btn-xl btn-default btn-block"><span class="glyphicon glyphicon-remove"> </span></a>
-        </div>
-        <div class="col-md-10 no-gutter">
-          <a href='/<%= friend.id %>' value="<%= friend.last_contacted_milli %>" class="fadefriend btn btn-default btn-xl btn-block"><%= friend.name %></a>
-          <br />
-        </div>
-      </div>
-      <% end %>
-    </div>
-
-    <div class="col-md-4">
-      <% @friends.each do |friend| %>
-      <div class="row">
-        <div class="col-md-2 no-gutter">
-          <a href='/<%= friend.id %>/delete' class="btn btn-xl btn-default btn-block"><span class="glyphicon glyphicon-remove"></span></a>
-        </div>
-        <div class="col-md-10 no-gutter">
-          <a href='/<%= friend.id %>' value="<%= friend.last_contacted_milli %>" class="fadefriend btn btn-default btn-xl btn-block"><%= friend.name %></a>
-          <br />
-        </div>
-      </div>
-      <% end %>
-    </div>
+    <% end %>
   </div> <!-- /row friend-grid -->
+    <% end %>
+
 
   <div class="row lg-spacer">
     <div class="col-md-4">
@@ -69,7 +44,7 @@
 
 </div> <!-- /container -->
 
-<script type="text/javascript" src="js/coloring.js"></script>
+<script type="text/javascript" src="js/coloring.js" defer></script>
 
 <!-- <span class="glyphicon glyphicon-cloud"></span></p>  -->
 
