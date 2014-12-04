@@ -1,5 +1,6 @@
-var rpb = ['red', 'purple', 'black'];
+var rpb = ['red', '#8A2E5C', 'black'];
 var oyw = ['orange', 'yellow', 'white'];
+// var rpb = ['#FF0000', '#AA1100', '#FF7700', '#FF4400', '#FFDD00', '#FFBB11', '#00FF00', '#55AA00', '#0000FF', '#000055', '#8A2BE2', '#310062', '#C77DF3', '#4B0082'];
 
 // returns an array of int x split into roughly equal intervals
 // anything that does not fit in evenly is added into the first intervals one by one
@@ -60,4 +61,4 @@ function d3ColorFriend(time, bgColors, txtColors) {
 
 window.onload = d3ColorFriend(30000,rpb,oyw);
 
-window.setInterval(function() { d3ColorFriend(30000,rpb,oyw); }, 250);
+window.setInterval(function() { d3ColorFriend(30000,rpb,oyw); }, 50);
