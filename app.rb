@@ -132,5 +132,5 @@ get '/:friend_id/reset' do
   @friend.update(last_contacted: moment)
   milli = (moment.to_f * 1000).to_i
   @friend.update(last_contacted_milli: milli)
-  redirect "/#{params[:friend_id]}"
+  redirect "/"
 end
