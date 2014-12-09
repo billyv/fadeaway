@@ -36,10 +36,10 @@
   margin-left: 70px;
 }
 .grad1 {
-  background: -moz-linear-gradient(bottom right, red 0%, #8A2E5C 80%); /* FF3.6+ */
-  background: -webkit-linear-gradient(left top, red 0%, #8A2E5C 80%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(bottom right, red 0%,#8A2E5C 80%); /* Opera11.10+ */
-  background: linear-gradient(to bottom right, red 0%,#8A2E5C 80%); /* W3C */
+  background: -moz-linear-gradient(bottom right, red 0%, #8A2E5C 70%); /* FF3.6+ */
+  background: -webkit-linear-gradient(left top, red 0%, #8A2E5C 70%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(bottom right, red 0%,#8A2E5C 70%); /* Opera11.10+ */
+  background: linear-gradient(to bottom right, red 0%,#8A2E5C 70%); /* W3C */
   background-attachment: fixed;
 }
 .login {
@@ -47,8 +47,11 @@
 }
 h1 {
   font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
-  /*font-family: 'Raleway Dots', cursive;
-  font-size: 46px;*/
+}
+h1.title {
+  font-family: 'Raleway Dots', cursive;
+  font-size: 48px;
+  color: white;
 }
 .fadefriend {
   padding: 10px;

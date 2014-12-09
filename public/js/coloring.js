@@ -1,6 +1,7 @@
-var rpb = ['red', '#8A2E5C', 'black'];
+var rpb = ['red', '#8A2E5C', 'black']; // red -> purple -> black
 var oyw = ['orange', 'yellow', 'white'];
-// var rpb = ['#FF0000', '#AA1100', '#FF7700', '#FF4400', '#FFDD00', '#FFBB11', '#00FF00', '#55AA00', '#0000FF', '#000055', '#8A2BE2', '#310062', '#C77DF3', '#4B0082'];
+// var rpb = ['#FF0000', '#AA1100', '#FF7700', 'purple', '#FF4400', '#FFDD00', '#FFBB11', '#00FF00', '#55AA00', '#0000FF', '#000055', '#8A2BE2', '#310062', '#C77DF3', '#4B0082', 'black'];
+// var rpb = ['red', 'purple', 'orange', 'purple', 'blue', 'purple', 'black'];
 
 // returns an array of int x split into roughly equal intervals
 // anything that does not fit in evenly is added into the first intervals one by one
@@ -32,14 +33,16 @@ function d3ColorFriend(time, bgColors, txtColors) {
   var now = new Date().getTime(); //time in ms
   var intervals = bgColors.length - 1;
 
+  // split time into matching intervals of colors for d3 function
   timeIntervals = split(time, intervals);
 
-                                              //1min
+
   var bgScale = d3.scale.linear().domain(timeIntervals).range(bgColors);
   var txtScale = d3.scale.linear().domain(timeIntervals).range(txtColors);
 
   var difference;
   var i;
+  // change colors for each friend based on time
   for (i = 0; i < friends.length; i++) {
 
     var lastContact = friends[i].attributes['data-last-contacted'].value;
