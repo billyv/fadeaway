@@ -4,8 +4,8 @@ Fadeaway is a web app to keep close friends from fading away. It tracks the time
 
 ## Features
 
-- Basic adress book functionality for various contact methods.
-- Tracks time since contact and informs via coloring.
+- Basic address book functionality for various contact methods.
+- Tracks time since last contact and informs through colors.
 
 ## Planned Features
 
@@ -18,4 +18,4 @@ Fadeaway is a web app to keep close friends from fading away. It tracks the time
 1. Clone the repo
 2. Install dependencies with `bundle install`
 3. Create the database with `rake db:create db:migrate` (you will need to have postgres installed)
-4. Run this app with shotgun`
+4. Run this app with shotgun
